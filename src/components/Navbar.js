@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <a href="/" className="text-xl font-bold text-primar ">
-        Gait Analysis Systems
+        Gait Analysis 
         </a>
 
         {/* Auth Button */}

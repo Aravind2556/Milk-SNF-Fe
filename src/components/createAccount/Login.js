@@ -46,7 +46,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen sticky w-screen bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
+    <div className="flex items-center justify-center h-screen fixed w-screen bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
       <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
         {/* Image Section */}
         <div className="md:w-2/3 p-6 flex justify-center items-center">
