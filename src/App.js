@@ -22,7 +22,7 @@ export const App = () => {
 
 
   return (
-    <div>
+    <div className='container-fluid p-0'>
 
      <Navbar/>
 

@@ -78,16 +78,16 @@ export const NewDashboard = () => {
   }
 
   return (
-    <div className="container mx-auto p-6 ">
+    <div className="container-fluid p-0 mx-auto ">
       <h1 className="text-center text-blue-600 text-2xl font-bold mb-6">
       Gait Analysis 
       </h1>
 
       {/* Charts Section */}
-      <div className=" flex-wrap flex justify-center gap-20">
+      <div className=" flex-wrap flex justify-center gap-5">
         {/* Combined Chart */}
-        <div className="flex justify-center">
-        <div className="bg-cyan-100 w-[350px] sm:w-[600px]  shadow-lg rounded-lg p-5">
+        <div className="flex justify-center col-11 col-md-8 col-lg-5">
+        <div className="bg-cyan-100 w-100  shadow-lg rounded-lg pt-3 pb-2 px-2">
           <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">THIGH</h2>
           <LiveChart
             data={[Thigh]}
@@ -102,8 +102,8 @@ export const NewDashboard = () => {
 
 
         {/* LightingValue Chart */}
-        <div className="flex justify-center">
-        <div className="bg-cyan-100 w-[350px] sm:w-[600px] shadow-lg rounded-lg p-5">
+        <div className="flex justify-center col-11 col-md-8 col-lg-5">
+        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
           <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">SHIN</h2>
           <LiveChart
             data={[Shin]}
@@ -118,8 +118,8 @@ export const NewDashboard = () => {
 
 
         {/* Spark Chart */}
-        <div className="flex justify-center">
-        <div className="bg-cyan-100 w-[350px] sm:w-[600px] shadow-lg rounded-lg p-5">
+        <div className="flex justify-center col-11 col-md-8 col-lg-5">
+        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
           <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">FOOT</h2>
           <LiveChart
             data={[Foot]}
@@ -134,8 +134,8 @@ export const NewDashboard = () => {
 
 
         {/* Current Chart */}
-        <div className="flex justify-center">
-        <div className="bg-cyan-100 w-[350px] sm:w-[600px] shadow-lg rounded-lg p-5 ">
+        <div className="flex justify-center col-11 col-md-8 col-lg-5">
+        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2 ">
           <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">EMG</h2>
           <LiveChart
             data={[EMG]}
