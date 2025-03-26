@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Eye, EyeOff } from "lucide-react"; // Import icons
-import PowermangeUser from "../../assets/login image .png";
+import PowermangeUser from "../../assets/cow.jpg";
 import { DContext } from "../../context/Datacontext";
 
 export const Login = () => {
@@ -46,8 +46,8 @@ export const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen fixed w-screen bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
-      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
+    <div className="flex items-center justify-center h-screen fixed w-screen   p-4 sm:p-6 md:p-8 lg:p-10">
+      <div className="flex flex-col md:flex-row bg-amber-50  shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
         {/* Image Section */}
         <div className="md:w-2/3 p-6 flex justify-center items-center">
           <img

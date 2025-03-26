@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PowermangeUser from "../../assets/Register.png";
+import PowermangeUser from "../../assets/buffalo-milk.webp";
 import { Eye, EyeOff } from "lucide-react";
 
 export const Register = () => {
@@ -50,13 +50,13 @@ export const Register = () => {
 
   return (
     <div className="flex items-center justify-center h-screen fixed w-screen bg-gray-100 p-4">
-      <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
+      <div className="flex flex-col md:flex-row bg-amber-50  shadow-lg rounded-lg overflow-hidden w-full max-w-4xl">
         {/* Image Section */}
         <div className="hidden md:flex md:w-1/2 p-6 justify-center items-center">
           <img
             src={PowermangeUser}
             alt="Register Illustration"
-            className="w-full object-cover rounded-lg"
+            className="w-full object-cover h-60 rounded-lg"
           />
         </div>
 

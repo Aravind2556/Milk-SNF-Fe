@@ -29,11 +29,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" bg-cyan-400 shadow-md sticky top-0 z-50">
+    <nav className=" bg-amber-50 shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
         <a href="/" className="text-xl font-bold text-primar ">
-        Gait Analysis 
+        Milk SNF 
         </a>
 
         {/* Auth Button */}

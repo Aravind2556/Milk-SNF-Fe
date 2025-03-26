@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import LiveChart from "./LiveChart";
 
 export const NewDashboard = () => {
-  const [Thigh, setThigh] = useState(null);
-  const [Shin, setShin] = useState(null);
-  const [Foot, setFoot] = useState(null);
-  const [EMG, SetEMG] = useState(null);
+  const [Red, setRed] = useState(null);
+  const [Green, setGreen] = useState(null);
+  const [Blue, setBlue] = useState(null);
+  const [Frequency, SetFrequency] = useState(null);
+  const [Snf,SetSnf] = useState(null)
 
 
   const controls = {
@@ -24,7 +25,9 @@ export const NewDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       const url =
-        "https://api.thingspeak.com/channels/2860072/feeds.json?api_key=OMHJTCKP4MNKXR8L";
+        "https://api.thingspeak.com/channels/2883257/feeds.json?api_key=ZX1MOBSY1M99ZXBG";
+
+            
 
       try {
         const res = await fetch(url);
@@ -34,31 +37,37 @@ export const NewDashboard = () => {
         if (data?.feeds?.length > 0) {
           const xAxis = data.feeds.map((feed) => new Date(feed.created_at).getTime());
 
-          setThigh({
+          setRed({
             "x-axis": xAxis,
             "y-axis": data.feeds.map((feed) => feed.field1),
-            color: "green",
-            seriesName: "Thigh",
+            color: "red",
+            seriesName: "Red",
           });
 
-          setShin({
+          setGreen({
             "x-axis": xAxis,
             "y-axis": data.feeds.map((feed) => feed.field2),
-            color: "blue",
-            seriesName: "Shin",
+            color: "green",
+            seriesName: "Green",
           });
 
-          setFoot({
+          setBlue({
             "x-axis": xAxis,
             "y-axis": data.feeds.map((feed) => feed.field3),
-            color: "#ff4f4f",
-            seriesName: "Foot",
+            color: "blue",
+            seriesName: "Blue",
           });
-          SetEMG({
+          SetFrequency({
             "x-axis": xAxis,
             "y-axis": data.feeds.map((feed) => feed.field4),
             color: "#ff4f4f",
-            seriesName: "EMG",
+            seriesName: "Output Freq",
+          });
+          SetSnf({
+            "x-axis": xAxis,
+            "y-axis": data.feeds.map((feed) => feed.field5),
+            color: "#ff4f4f",
+            seriesName: "Snf",
           });
           
         }
@@ -73,25 +82,25 @@ export const NewDashboard = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  if (!Thigh || !Shin || !Foot || !EMG ) {
+  if (!Red || !Green || !Blue || ! Frequency || !Snf) {
     return <div className="text-center text-lg font-semibold text-gray-600">Loading...</div>;
   }
 
   return (
-    <div className="container-fluid p-0 mx-auto ">
+    <div className="container-fluid p-0 mx-auto mt-10 ">
       <h1 className="text-center text-blue-600 text-2xl font-bold mb-6">
-      Gait Analysis 
+      Milk Snf & Adulteration Monitoring System 
       </h1>
 
       {/* Charts Section */}
-      <div className=" flex-wrap flex justify-center gap-5">
+      <div className=" flex-wrap flex justify-center gap-5 mt-5">
         {/* Combined Chart */}
         <div className="flex justify-center col-11 col-md-8 col-lg-5">
-        <div className="bg-cyan-100 w-100  shadow-lg rounded-lg pt-3 pb-2 px-2">
-          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">THIGH</h2>
+        <div className="bg-amber-50  w-100  shadow-lg rounded-lg pt-3 pb-2 px-2">
+          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">Red</h2>
           <LiveChart
-            data={[Thigh]}
-            title="Combined Chart"
+            data={[Red]}
+            title="Red"
             lineStyle="straight"
             lineWidth={1}
             chartType="line"
@@ -103,11 +112,11 @@ export const NewDashboard = () => {
 
         {/* LightingValue Chart */}
         <div className="flex justify-center col-11 col-md-8 col-lg-5">
-        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
-          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">SHIN</h2>
+        <div className="bg-amber-50  w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
+          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">Green</h2>
           <LiveChart
-            data={[Shin]}
-            title={Shin.seriesName}
+            data={[Green]}
+            title={Green.seriesName}
             lineStyle="straight"
             lineWidth={1}
             chartType="line"
@@ -119,11 +128,11 @@ export const NewDashboard = () => {
 
         {/* Spark Chart */}
         <div className="flex justify-center col-11 col-md-8 col-lg-5">
-        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
-          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">FOOT</h2>
+        <div className="bg-amber-50  w-100 shadow-lg rounded-lg pt-3 pb-2 px-2">
+          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">Blue</h2>
           <LiveChart
-            data={[Foot]}
-            title={Foot.seriesName}
+            data={[Blue]}
+            title={Blue.seriesName}
             lineStyle="smooth"
             lineWidth={1}
             chartType="line"
@@ -135,11 +144,27 @@ export const NewDashboard = () => {
 
         {/* Current Chart */}
         <div className="flex justify-center col-11 col-md-8 col-lg-5">
-        <div className="bg-cyan-100 w-100 shadow-lg rounded-lg pt-3 pb-2 px-2 ">
-          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">EMG</h2>
+        <div className="bg-amber-50  w-100 shadow-lg rounded-lg pt-3 pb-2 px-2 ">
+          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">Frequency</h2>
           <LiveChart
-            data={[EMG]}
-            title={EMG.seriesName}
+            data={[ Frequency]}
+            title={ Frequency.seriesName}
+            lineStyle="straight"
+            lineWidth={1}
+            chartType="line"
+            controls={controls}
+            
+          />
+        </div>
+        </div>  
+
+            {/* Current Chart */}
+                <div className="flex justify-center col-11 col-md-8 col-lg-5">
+        <div className="bg-amber-50  w-100 shadow-lg rounded-lg pt-3 pb-2 px-2 ">
+          <h2 className="text-center text-lg font-semibold text-gray-800 mb-4">Snf</h2>
+          <LiveChart
+            data={[Snf]}
+            title={Snf.seriesName}
             lineStyle="straight"
             lineWidth={1}
             chartType="line"
@@ -148,6 +173,7 @@ export const NewDashboard = () => {
           />
         </div>
         </div>
+
 
                 
             
